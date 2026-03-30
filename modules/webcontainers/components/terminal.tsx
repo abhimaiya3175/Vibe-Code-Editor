@@ -388,9 +388,13 @@ TerminalComponent = forwardRef<TerminalRef, TerminalProps>(({
 
     // Handle resize
     const resizeObserver = new ResizeObserver(() => {
-      if (fitAddon.current) {
+      if (fitAddon.current && terminalRef.current && terminalRef.current.clientWidth > 0 && terminalRef.current.clientHeight > 0) {
         setTimeout(() => {
-          fitAddon.current?.fit();
+          try {
+            fitAddon.current?.fit();
+          } catch (e) {
+            // Ignore resize errors when dimensions are temporarily invalid
+          }
         }, 100);
       }
     });

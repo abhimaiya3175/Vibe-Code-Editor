@@ -47,7 +47,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import "katex/dist/katex.min.css";
 import Image from "next/image";
-import Stream from "stream";
 import { useAgent } from "../hooks/useAgent";
 
 interface ChatMessage {

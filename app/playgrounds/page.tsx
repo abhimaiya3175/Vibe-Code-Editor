@@ -2,6 +2,7 @@ import { getPublicPlaygrounds } from "@/modules/dashboard/actions";
 import { PublicPlaygroundCard } from "@/modules/playgrounds/components/public-playground-card";
 import { Globe } from "lucide-react";
 import { SearchInput } from "@/modules/playgrounds/components/search-input";
+import type { Project } from "@/modules/dashboard/types";
 
 export const metadata = {
   title: "Discover Playgrounds | Vibecode",
@@ -16,7 +17,7 @@ export default async function PlaygroundsPage({
   const { q } = await searchParams;
   const publicPlaygrounds = await getPublicPlaygrounds();
 
-  const filteredPlaygrounds = publicPlaygrounds.filter((p: any) => 
+  const filteredPlaygrounds = publicPlaygrounds.filter((p: Project) => 
     !q || 
     p.title.toLowerCase().includes(q.toLowerCase()) || 
     (p.description && p.description.toLowerCase().includes(q.toLowerCase())) ||
@@ -57,7 +58,7 @@ export default async function PlaygroundsPage({
         </div>
       ) : (
         <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
-          {filteredPlaygrounds.map((project: any) => (
+          {filteredPlaygrounds.map((project: Project) => (
             <div key={project.id} className="break-inside-avoid">
               <PublicPlaygroundCard project={project} />
             </div>

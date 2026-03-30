@@ -1,0 +1,40 @@
+﻿
+> vibe-editor@0.1.0 build
+> next build
+
+   Γû▓ Next.js 15.4.5
+   - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 13.0s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/10) ...
+   Generating static pages (2/10) 
+   Generating static pages (4/10) 
+   Generating static pages (7/10) 
+ Γ£ô Generating static pages (10/10)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+Γöî ╞Æ /                                      173 B         108 kB
+Γö£ ╞Æ /_not-found                            990 B         101 kB
+Γö£ ╞Æ /api/auth/[...nextauth]                136 B        99.8 kB
+Γö£ ╞Æ /api/chat                              136 B        99.8 kB
+Γö£ ╞Æ /api/code-completion                   136 B        99.8 kB
+Γö£ ╞Æ /api/template/[id]                     136 B        99.8 kB
+Γö£ ╞Æ /auth/sign-in                          163 B         105 kB
+Γö£ ╞Æ /dashboard                           11.1 kB         177 kB
+Γö£ ╞Æ /playground/[id]                      238 kB         404 kB
+Γöö ╞Æ /playgrounds                         3.25 kB         136 kB
++ First Load JS shared by all            99.7 kB
+  Γö£ chunks/4bd1b696-cf72ae8a39fa05aa.js  54.1 kB
+  Γö£ chunks/964-e5f5bf07ef48f1a6.js       43.5 kB
+  Γöö other shared chunks (total)          2.02 kB
+
+
+╞Æ Middleware                             85.5 kB
+
+╞Æ  (Dynamic)  server-rendered on demand
+

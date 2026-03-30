@@ -8,19 +8,19 @@
 
 ## 🚀 Features
 
-- 🔐 **OAuth Login with NextAuth** – Supports Google & GitHub login.
+npm run dev
 - 🎨 **Modern UI** – Built with TailwindCSS & ShadCN UI.
 - 🌗 **Dark/Light Mode** – Seamlessly toggle between themes.
 - 🧱 **Project Templates** – Choose from React, Next.js, Express, Hono, Vue, or Angular.
 - 🗂️ **Custom File Explorer** – Create, rename, delete, and manage files/folders easily.
-- 🖊️ **Enhanced Monaco Editor** – Syntax highlighting, formatting, keybindings, and AI autocomplete.
-- 💡 **AI Suggestions with Ollama** – Local models give you code completion on `Ctrl + Space` or double `Enter`. Accept with `Tab`.
-- ⚙️ **WebContainers Integration** – Instantly run frontend/backend apps right in the browser.
-- 🤖 **Agentic AI Assistant** – An AI that doesn't just talk; it can **read files**, **write code**, and **run terminal commands** in your environment.
-- 🌍 **Community Discover Hub** – Showcase your work! Toggle "Public" to share projects in the global gallery.
-- 🍴 **Template Forking** – Browse community creations, search by tech stack, and fork projects instantly to your workspace.
-- 💻 **Interactive Shell** – Real-time terminal experience powered by xterm.js linked to your container.
-- 🔍 **Masonry Discovery** – A Pinterest-style feed with real-time landing page search.
+- 🖊️ **Enhanced Monaco Editor** – Write faster with rich syntax highlighting, on-the-fly formatting, intuitive keybindings, and AI-powered autocomplete.
+- 💡 **AI Suggestions with Ollama** – Trigger local code completions with `Ctrl + Space` or double `Enter`, and commit suggestions instantly with `Tab`.
+- ⚙️ **WebContainers Integration** – Boot and run full frontend/backend apps directly in your browser, no local runtime setup required.
+- 🤖 **Agentic AI Assistant** – A hands-on AI teammate that can **read files**, **write code**, and **run terminal commands** in your workspace.
+- 🌍 **Community Discover Hub** – Share projects publicly with one toggle and get discovered through the global creator gallery.
+- 🍴 **Template Forking** – Explore community builds by stack and fork any project into your workspace in seconds.
+- 💻 **Interactive Shell** – Use a live xterm.js-powered terminal synced with your running container for real-time command execution.
+- 🔍 **Masonry Discovery** – Browse a Pinterest-style discovery wall with real-time search across published landing pages.
 
 ---
 
