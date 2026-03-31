@@ -11,6 +11,12 @@ interface ChatRequest {
 }
 
 async function generateAIResponse(messages: ChatMessage[]): Promise<string> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  
+  if (!apiKey) {
+    throw new Error("GEMINI_API_KEY is missing from your .env file. Please add an API key from Google AI Studio.");
+  }
+
   const systemPrompt = `You are an advanced AI coding assistant with access to the user's workspace via WebContainers.
 You help developers with code explanations, debugging, architecture advice, writing clean code, and refactoring.
 
@@ -29,40 +35,54 @@ To use a tool, output exactly this JSON format on a new line:
 Do not output multiple TOOL_CALLs in a single response. Always wait for the user to provide the result before proceeding.
 Always provide clear, practical answers. Use proper code formatting when showing examples.`;
 
-  const fullMessages = [{ role: "system", content: systemPrompt }, ...messages];
-
-  const prompt = fullMessages
-    .map((msg) => `${msg.role}: ${msg.content}`)
-    .join("\n\n");
-
   try {
-    const response = await fetch("http://localhost:11434/api/generate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "codellama:latest",
-        prompt: prompt,
-        stream: false,
-        options: {
-          temperature: 0.7, // Controls randomness (0-1)
-          max_tokens: 1000, // Maximum response length
-          top_p: 0.9, // controls diversity
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      }),
-    });
+        body: JSON.stringify({
+          system_instruction: {
+            parts: [{ text: systemPrompt }]
+          },
+          contents: (() => {
+            const geminiContents: { role: string; parts: { text: string }[] }[] = [];
+            for (const msg of messages) {
+              const role = msg.role === "assistant" ? "model" : "user";
+              // Combine consecutive messages with the same role
+              if (geminiContents.length > 0 && geminiContents[geminiContents.length - 1].role === role) {
+                geminiContents[geminiContents.length - 1].parts[0].text += "\n\n" + msg.content;
+              } else {
+                geminiContents.push({ role, parts: [{ text: msg.content }] });
+              }
+            }
+            // Gemini strictly requires the first message to be from 'user'
+            if (geminiContents.length > 0 && geminiContents[0].role === "model") {
+               geminiContents.unshift({ role: "user", parts: [{ text: "Context restored." }] });
+            }
+            return geminiContents;
+          })(),
+        }),
+      }
+    );
 
     const data = await response.json();
 
-    if (!data.response) {
-      throw new Error("No response from AI model");
+    if (!response.ok) {
+      console.error("Gemini API error:", data);
+      throw new Error(data.error?.message || "Gemini API request failed");
     }
 
-    return data.response.trim();
+    if (!data.candidates?.[0]?.content?.parts?.[0]?.text) {
+      throw new Error("No text response from Gemini model");
+    }
+
+    return data.candidates[0].content.parts[0].text.trim();
   } catch (error) {
     console.error("AI generation error:", error);
-    throw new Error("Failed to generate AI response");
+    throw new Error(error instanceof Error ? error.message : "Failed to generate AI response");
   }
 }
 

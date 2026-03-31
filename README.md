@@ -14,7 +14,8 @@ npm run dev
 - 🧱 **Project Templates** – Choose from React, Next.js, Express, Hono, Vue, or Angular.
 - 🗂️ **Custom File Explorer** – Create, rename, delete, and manage files/folders easily.
 - 🖊️ **Enhanced Monaco Editor** – Write faster with rich syntax highlighting, on-the-fly formatting, intuitive keybindings, and AI-powered autocomplete.
-- 💡 **AI Suggestions with Ollama** – Trigger local code completions with `Ctrl + Space` or double `Enter`, and commit suggestions instantly with `Tab`.
+- 💡 **AI Core powered by Google Gemini** – Integrated with the Gemini API for advanced code generation, file manipulation, and real-time completions.
+- 🎨 **Modern Dashboard & Management** – Initiate new playgrounds with robust cloned templates, star your favorites, and track recent projects in a sleek, unified dashboard.
 - ⚙️ **WebContainers Integration** – Boot and run full frontend/backend apps directly in your browser, no local runtime setup required.
 - 🤖 **Agentic AI Assistant** – A hands-on AI teammate that can **read files**, **write code**, and **run terminal commands** in your workspace.
 - 🌍 **Community Discover Hub** – Share projects publicly with one toggle and get discovered through the global creator gallery.
@@ -33,10 +34,10 @@ npm run dev
 | Language      | TypeScript                                   |
 | Auth          | NextAuth (Google + GitHub OAuth)             |
 | Editor        | Monaco Editor                                |
-| AI Suggestion | Ollama (LLMs running locally via Docker)     |
-| Runtime       | WebContainers                                |
-| Terminal      | xterm.js                                     |
-| Database      | MongoDB (via DATABASE_URL)                   |
+| AI Engine    | Google Gemini API                           |
+| Runtime      | WebContainers                               |
+| Terminal     | xterm.js                                    |
+| Database     | MongoDB (with Prisma)                       |
 
 ---
 
@@ -73,6 +74,7 @@ AUTH_GITHUB_ID=your_github_client_id
 AUTH_GITHUB_SECRET=your_github_secret
 DATABASE_URL=your_mongodb_connection_string
 NEXTAUTH_URL=http://localhost:3000
+GEMINI_API_KEY=your_gemini_api_key_from_google_ai_studio
 ```
 
 ### 4. Start Local MongoDB & Ollama
@@ -86,10 +88,7 @@ NEXTAUTH_URL=http://localhost:3000
    node init-replica.js
    ```
 
-**Ollama (AI)**: Make sure [Ollama](https://ollama.com/) is installed, then run:
-```bash
-ollama run codellama
-```
+**AI Engine**: This project uses the Google Gemini API. Get your API key from [Google AI Studio](https://aistudio.google.com/) and add it to your `.env` file.
 
 ### 5. Run the Development Server
 

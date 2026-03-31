@@ -1,0 +1,25 @@
+Usage: next dev [directory] [options]
+
+Starts Next.js in development mode with hot-code reloading, error reporting,
+and more.
+
+Arguments:
+  [directory]                              A directory on which to build the application. If no directory is provided, the current directory will be used.
+
+Options:
+  --inspect [[host:]port]                  Allows inspecting server-side code. See https://nextjs.org/docs/app/guides/debugging#server-side-code
+  --turbo                                  Starts development mode using Turbopack.
+  --turbopack                              Starts development mode using Turbopack.
+  --webpack                                Starts development mode using webpack.
+  -p, --port <port>                        Specify a port number on which to start the application. (default: 3000, env: PORT)
+  -H, --hostname <hostname>                Specify a hostname on which to start the application (default: 0.0.0.0).
+  --disable-source-maps                    Don't start the Dev server with `--enable-source-maps`. (default: false)
+  --experimental-https                     Starts the server with HTTPS and generates a self-signed certificate.
+  --experimental-https-key, <path>         Path to a HTTPS key file.
+  --experimental-https-cert, <path>        Path to a HTTPS certificate file.
+  --experimental-https-ca, <path>          Path to a HTTPS certificate authority file.
+  --no-server-fast-refresh                 Disable server-side Fast Refresh
+  --experimental-upload-trace, <traceUrl>  Reports a subset of the debugging trace to a remote HTTP URL. Includes sensitive data.
+  --experimental-next-config-strip-types   Use Node.js native TypeScript resolution for next.config.(ts|mts)
+  --experimental-cpu-prof                  Enable CPU profiling. Profiles are saved to .next/cpu-profiles/ on exit.
+  -h, --help                               Displays this message.
